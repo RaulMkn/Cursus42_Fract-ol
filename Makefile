@@ -6,7 +6,7 @@
 #    By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 21:07:40 by rmakende          #+#    #+#              #
-#    Updated: 2025/02/27 17:50:00 by rmakende         ###   ########.fr        #
+#    Updated: 2025/02/27 20:30:26 by rmakende         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,16 +22,12 @@ LIBFT_DIR = ./Libft
 LIBRARY = $(LIBFT_DIR)/libft.a
 LIB_HEADERS = $(LIBFT_DIR)/libft.h
 
-PRINTF_DIR = ./printf
-PRINTF = $(PRINTF_DIR)/libftprintf.a
-PRINT_HEADERS = $(PRINTF_DIR)/ft_printf.h
-
 SRCS = fractol.c init.c render.c math_utils.c events.c
 
 OBJS = $(SRCS:.c=.o)
 NAME = fractol
 
-all: $(LIBRARY) $(PRINTF) $(MINILIBX) $(PRINTF) $(NAME)
+all: $(LIBRARY) $(MINILIBX) $(NAME)
 
 $(MINILIBX):
 	cd $(MINILIBX_DIR) && $(MAKE)
@@ -39,16 +35,12 @@ $(MINILIBX):
 $(LIBRARY):
 	cd $(LIBFT_DIR) && $(MAKE)
 
-$(PRINTF):
-	cd $(PRINTF_DIR) && $(MAKE)
-
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBRARY) $(PRINTF) $(MINILIBX) $(LIBS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBRARY) $(MINILIBX) $(LIBS)
 
 clean:
 	rm -f $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(PRINTF_DIR) fclean
 	cd $(MINILIBX_DIR) && $(MAKE) clean
 
 fclean: clean

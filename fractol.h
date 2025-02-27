@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:44:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/27 18:58:53 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:15:47 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "Libft/libft.h"
 # include "minilibx-linux/mlx.h"
-# include "printf/ft_printf.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <math.h>
@@ -86,7 +85,7 @@ void		fractal_init(t_fractol *fractal);
 t_complex	square_complex(t_complex z);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 int			key_handler(int keySym, t_fractol *fractal);
-int			mouse_handler(int but, t_fractol *fractal);
+int			mouse_handler(int but, int x, int y, t_fractol *fractal);
 int			close_handler(t_fractol *fractal);
 
 #endif

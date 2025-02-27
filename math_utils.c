@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:47:17 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/27 18:34:48 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:12:59 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_complex	sum_complex(t_complex z1, t_complex z2)
 
 t_complex	square_complex(t_complex z)
 {
-	t_complex result;
+	t_complex	result;
 
 	result.x = (z.x * z.x) - (z.y * z.y);
 	result.y = 2 * z.x * z.y;

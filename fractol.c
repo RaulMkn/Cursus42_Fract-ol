@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 22:08:40 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/25 20:40:27 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:14:29 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	else
-		ft_printf("Argumentos no validos\n Ej:   ./fractol mandelbrot\n       ./fractol julia n1 n2\n");
+		ft_putstr_fd("Argumentos no validos\n", 1);
 }

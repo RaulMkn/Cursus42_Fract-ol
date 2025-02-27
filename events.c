@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:45:00 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/27 18:58:22 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:11:26 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,12 @@ int	key_handler(int keySym, t_fractol *fractal)
 	return (0);
 }
 
-int	mouse_handler(int but, t_fractol *fractal)
+int	mouse_handler(int but, int x, int y, t_fractol *fractal)
 {
+	x = 0;
+	y = 0;
+	x = y;
+	y = x;
 	if (but == Button5)
 	{
 		fractal->zoom *= 0.95;
