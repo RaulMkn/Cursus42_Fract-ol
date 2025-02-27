@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:51:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/27 18:34:39 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/02/27 18:57:24 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	data_init(t_fractol *fractal)
 	fractal->iterations_definition = 42;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
+	fractal->zoom = 1.0;
 }
 
 static void	events_init(t_fractol *fractal)
