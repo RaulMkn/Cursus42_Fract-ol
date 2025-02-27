@@ -6,7 +6,7 @@
 #    By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 21:07:40 by rmakende          #+#    #+#              #
-#    Updated: 2025/02/25 20:43:42 by rmakende         ###   ########.fr        #
+#    Updated: 2025/02/27 17:50:00 by rmakende         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ PRINTF_DIR = ./printf
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 PRINT_HEADERS = $(PRINTF_DIR)/ft_printf.h
 
-SRCS = fractol.c init.c render.c math_utils.c
+SRCS = fractol.c init.c render.c math_utils.c events.c
 
 OBJS = $(SRCS:.c=.o)
 NAME = fractol

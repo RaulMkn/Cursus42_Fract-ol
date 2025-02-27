@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:18:51 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/26 16:23:29 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:22:19 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	handle_pixel(int x, int y, t_fractol *fractal)
 	z.x = 0.0;
 	z.y = 0.0;
 	c.x = map(x, -2, 2, 0, WIDTH);
-	c.x = map(y, 2, -2, 0, HEIGHT);
+	c.y = map(y, -2, 2, 0, HEIGHT);
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
@@ -60,7 +60,7 @@ void	fractal_render(t_fractol *fractal)
 		{
 			handle_pixel(x, y, fractal);
 		}
-		mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
-			fractal->img.img, 0, 0);
 	}
+	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
+		fractal->img.img, 0, 0);
 }
