@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:45:00 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/27 20:11:26 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:10:40 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,18 @@ int	mouse_handler(int but, int x, int y, t_fractol *fractal)
 		fractal->zoom *= 1.05;
 	}
 	fractal_render(fractal);
+	return (0);
+}
+
+int	julia_track(int x, int y, t_fractol *fractal)
+{
+	if (!ft_strncmp(fractal->name, "julia", 5))
+	{
+		fractal->julia_x = (map(normalize(x, 0, WIDTH), -2, 2)
+				* fractal->zoom) + fractal->shift_x;
+		fractal->julia_y = (map(normalize(y, 0, HEIGHT), 2, -2)
+				* fractal->zoom) + fractal->shift_y;
+		fractal_render(fractal);
+	}
 	return (0);
 }

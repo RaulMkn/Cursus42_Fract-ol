@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 17:13:18 by rmakende          #+#    #+#             */
-/*   Updated: 2024/11/06 16:27:54 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/02/27 21:47:22 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_strcmp(char *s1, char *s2);
+long	ft_atol(const char *str);
+double	ft_atodbl(char *s);
 
 typedef struct s_list
 {

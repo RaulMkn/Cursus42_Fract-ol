@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:51:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/27 20:12:31 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:02:40 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ static void	events_init(t_fractol *fractal)
 		fractal);
 	mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask,
 		close_handler, fractal);
+	mlx_hook(fractal->mlx_window, MotionNotify, PointerMotionMask, julia_track,
+		fractal);
 }
 
 void	fractal_init(t_fractol *fractal)
 {
-	if (((fractal->mlx_connection = mlx_init()) == NULL))
+	fractal->mlx_connection = mlx_init();
+	if ((fractal->mlx_connection == NULL))
 		return ;
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, WIDTH, HEIGHT,
 			fractal->name);

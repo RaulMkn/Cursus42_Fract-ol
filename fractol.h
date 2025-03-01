@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:44:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/27 20:15:47 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:14:22 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,12 @@ typedef struct s_fractol
 	double	shift_x;
 	double	shift_y;
 	double	zoom;
+	double	julia_x;
+	double	julia_y;
 }			t_fractol;
 
 void		fractal_init(t_fractol *fractal);
-double		map(double unscale_num, double new_min, double new_max,
-				double old_min, double old_max);
+double		map(double norm_value, double new_min, double new_max);
 void		fractal_render(t_fractol *fractal);
 void		fractal_init(t_fractol *fractal);
 t_complex	square_complex(t_complex z);
@@ -87,5 +88,7 @@ t_complex	sum_complex(t_complex z1, t_complex z2);
 int			key_handler(int keySym, t_fractol *fractal);
 int			mouse_handler(int but, int x, int y, t_fractol *fractal);
 int			close_handler(t_fractol *fractal);
+int			julia_track(int x, int y, t_fractol *fractal);
+double		normalize(double value, double old_min, double old_max);
 
 #endif

@@ -6,17 +6,20 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:47:17 by rmakende          #+#    #+#             */
-/*   Updated: 2025/02/27 20:12:59 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:14:05 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	map(double unscale_num, double new_min, double new_max, double old_min,
-		double old_max)
+double	normalize(double value, double old_min, double old_max)
 {
-	return ((new_max - new_min) * (unscale_num - old_min) / (old_max - old_min)
-		+ new_min);
+	return ((value - old_min) / (old_max - old_min));
+}
+
+double	map(double norm_value, double new_min, double new_max)
+{
+	return (new_min + norm_value * (new_max - new_min));
 }
 
 t_complex	sum_complex(t_complex z1, t_complex z2)
