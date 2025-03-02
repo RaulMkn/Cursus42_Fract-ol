@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:44:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/02 22:34:18 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/02 23:36:56 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
 # include <unistd.h>
 
 # define WIDTH 1000
-# define HEIGHT 800
-# define DELTA 0.05
+# define HEIGHT 1000
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
@@ -72,7 +71,7 @@ typedef struct s_fractol
 	void	*mlx_window;
 	t_img	img;
 	double	escape_value;
-	int		iterations_definition;
+	int		iterations;
 	double	shift_x;
 	double	shift_y;
 	double	zoom;

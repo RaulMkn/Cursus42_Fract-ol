@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:18:51 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/02 18:26:52 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/02 23:37:52 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ static void	handle_pixel(int x, int y, t_fractol *fractal)
 	z.y = (map(normalize(y, 0, HEIGHT), 2, -2) * fractal->zoom)
 		+ fractal->shift_y;
 	mandel_vs_julia(&z, &c, fractal);
-	while (i < fractal->iterations_definition)
+	while (i < fractal->iterations)
 	{
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = map(normalize(i, 0, fractal->iterations_definition), WHITE,
+			color = map(normalize(i, 0, fractal->iterations), WHITE,
 					ULTRA_VIOLET);
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;
@@ -68,11 +68,11 @@ void	fractal_render(t_fractol *fractal)
 	int	x;
 	int	y;
 
-	y = -1;
-	while (++y < HEIGHT)
+	y = 0;
+	while (y++ < HEIGHT)
 	{
-		x = -1;
-		while (++x < WIDTH)
+		x = 0;
+		while (x++ < WIDTH)
 			handle_pixel(x, y, fractal);
 	}
 	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
