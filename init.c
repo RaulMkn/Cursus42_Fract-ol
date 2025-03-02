@@ -6,13 +6,13 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:51:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/01 15:02:40 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/02 18:22:47 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	data_init(t_fractol *fractal)
+static void	data_init(t_fractol *fractal)
 {
 	fractal->escape_value = 4;
 	fractal->iterations_definition = 42;
@@ -28,8 +28,6 @@ static void	events_init(t_fractol *fractal)
 		fractal);
 	mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask,
 		close_handler, fractal);
-	mlx_hook(fractal->mlx_window, MotionNotify, PointerMotionMask, julia_track,
-		fractal);
 }
 
 void	fractal_init(t_fractol *fractal)

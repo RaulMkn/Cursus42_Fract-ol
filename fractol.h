@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:44:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/01 15:14:22 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:58:29 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 # define WIDTH 800
 # define HEIGHT 800
+# define DELTA 0.05
 
 # define BLACK 0x000000              // RGB(0, 0, 0)
 # define WHITE 0xFFFFFF              // RGB(255, 255, 255)
@@ -88,7 +89,6 @@ t_complex	sum_complex(t_complex z1, t_complex z2);
 int			key_handler(int keySym, t_fractol *fractal);
 int			mouse_handler(int but, int x, int y, t_fractol *fractal);
 int			close_handler(t_fractol *fractal);
-int			julia_track(int x, int y, t_fractol *fractal);
 double		normalize(double value, double old_min, double old_max);
 
 #endif
