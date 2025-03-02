@@ -6,7 +6,7 @@
 #    By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 21:07:40 by rmakende          #+#    #+#              #
-#    Updated: 2025/02/27 20:30:26 by rmakende         ###   ########.fr        #
+#    Updated: 2025/03/02 19:24:28 by rmakende         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT_DIR = ./Libft
 LIBRARY = $(LIBFT_DIR)/libft.a
 LIB_HEADERS = $(LIBFT_DIR)/libft.h
 
-SRCS = fractol.c init.c render.c math_utils.c events.c
+SRCS = fractol.c init.c render.c utils.c events.c
 
 OBJS = $(SRCS:.c=.o)
 NAME = fractol
