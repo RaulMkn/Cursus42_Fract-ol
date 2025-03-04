@@ -6,11 +6,26 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:51:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/04 15:50:57 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:16:36 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static int	close_window(void *param)
+{
+	t_fractol	*fractal;
+
+	fractal = (t_fractol *)param;
+	if (!fractal)
+		return (1);
+	mlx_destroy_image(fractal->mlx_connection, fractal->img.img);
+	mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
+	mlx_destroy_display(fractal->mlx_connection);
+	free(fractal->mlx_connection);
+	exit(0);
+	return (0);
+}
 
 static void	data_init(t_fractol *fractal)
 {
@@ -27,7 +42,7 @@ static void	events_init(t_fractol *fractal)
 	mlx_hook(fractal->mlx_window, ButtonPress, ButtonPressMask, mouse_handler,
 		fractal);
 	mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask,
-		close_handler, fractal);
+		close_window, fractal);
 }
 
 void	fractal_init(t_fractol *fractal)

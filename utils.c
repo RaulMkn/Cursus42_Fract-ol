@@ -6,13 +6,13 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:47:17 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/04 15:48:17 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:14:58 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	close_handler(int n, t_fractol *fractal)
+void	close_handler(int n, t_fractol *fractal)
 {
 	if (n >= 4)
 		mlx_destroy_image(fractal->mlx_connection, fractal->img.img);
