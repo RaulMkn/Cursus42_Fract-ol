@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:45:00 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/04 15:52:46 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:43:30 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	key_handler(int key, t_fractol *fractal)
 	else if (key == XK_Down)
 		fractal->shift_y += (1 * fractal->zoom);
 	else if (key == XK_plus || key == XK_KP_Add)
-		fractal->iterations *= 1.1;
+		fractal->iterations = (fractal->iterations * 1.1) + 1;
 	else if (key == XK_minus || key == XK_KP_Subtract)
 		fractal->iterations /= 1.1;
 	if (!ft_strncmp(fractal->name, "julia", 5))
