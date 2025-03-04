@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 22:08:40 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/02 21:51:34 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:41:15 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	handle_args(char *argv)
 				flag2 = 1;
 			else
 			{
-				ft_putstr_fd("Invalid number. Expected format: ±X.Y\n", 1);
+				ft_putstr_fd("Invalid number. Expected format: ±X.Y\n", 2);
 				exit(1);
 			}
 		}
@@ -39,7 +39,7 @@ static void	handle_args(char *argv)
 	}
 }
 
-static void	handle_julia(t_fractol *fractal, char *argv[])
+static void	handle_julia_args(t_fractol *fractal, char *argv[])
 {
 	fractal->julia_x = ft_atodbl(argv[2]);
 	fractal->julia_y = ft_atodbl(argv[3]);
@@ -47,12 +47,12 @@ static void	handle_julia(t_fractol *fractal, char *argv[])
 	handle_args(argv[3]);
 	if (fractal->julia_x > INT_MAX || fractal->julia_y > INT_MAX)
 	{
-		ft_putstr_fd("Error: Argument out of range.\n", 1);
+		ft_putstr_fd("Error: Argument out of range.\n", 2);
 		exit(1);
 	}
 	else if (fractal->julia_x < INT_MIN || fractal->julia_y < INT_MIN)
 	{
-		ft_putstr_fd("Error: Argument out of range.\n", 1);
+		ft_putstr_fd("Error: Argument out of range.\n", 2);
 		exit(1);
 	}
 }
@@ -71,16 +71,16 @@ int	main(int argc, char *argv[])
 	else if (argc == 4 && ft_strcmp(argv[1], "julia") == 0)
 	{
 		fractal.name = argv[1];
-		handle_julia(&fractal, argv);
+		handle_julia_args(&fractal, argv);
 		fractal_init(&fractal);
 		fractal_render(&fractal);
 		return (mlx_loop(fractal.mlx_connection), 0);
 	}
 	else
 	{
-		ft_putstr_fd("Wrong arguments\nExpected:\n", 1);
-		ft_putstr_fd("./fractol mandelbrot\n./fractol julia n1 n2\n", 1);
-		ft_putstr_fd("Note: n1 and n2 are expected to be decimal.\n", 1);
+		ft_putstr_fd("Wrong arguments\nExpected:\n", 2);
+		ft_putstr_fd("./fractol mandelbrot\n./fractol julia n1 n2\n", 2);
+		ft_putstr_fd("Note: n1 and n2 are expected to be decimal.\n", 2);
 	}
 	return (1);
 }

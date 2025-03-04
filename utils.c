@@ -6,13 +6,26 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:47:17 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/02 18:28:28 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:48:17 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	normalize(double value, double old_min, double old_max)
+int	close_handler(int n, t_fractol *fractal)
+{
+	if (n >= 4)
+		mlx_destroy_image(fractal->mlx_connection, fractal->img.img);
+	if (n >= 3)
+		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
+	if (n >= 2)
+		mlx_destroy_display(fractal->mlx_connection);
+	if (n >= 1)
+		free(fractal->mlx_connection);
+	exit(1);
+}
+
+double	norm(double value, double old_min, double old_max)
 {
 	return ((value - old_min) / (old_max - old_min));
 }

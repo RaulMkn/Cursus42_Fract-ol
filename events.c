@@ -6,37 +6,28 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:45:00 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/02 23:37:19 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:52:46 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	close_handler(t_fractol *fractal)
-{
-	mlx_destroy_image(fractal->mlx_connection, fractal->img.img);
-	mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
-	mlx_destroy_display(fractal->mlx_connection);
-	free(fractal->mlx_connection);
-	exit(1);
-}
-
 static void	handle_julia(int key, t_fractol *fractal)
 {
 	if (key == XK_w)
-		fractal->julia_x += 0.5 * fractal->zoom;
+		fractal->julia_x += 0.25 * fractal->zoom;
 	if (key == XK_s)
-		fractal->julia_x -= 0.5 * fractal->zoom;
+		fractal->julia_x -= 0.25 * fractal->zoom;
 	if (key == XK_a)
-		fractal->julia_y += 0.5 * fractal->zoom;
+		fractal->julia_y += 0.25 * fractal->zoom;
 	if (key == XK_d)
-		fractal->julia_y -= 0.5 * fractal->zoom;
+		fractal->julia_y -= 0.25 * fractal->zoom;
 }
 
 int	key_handler(int key, t_fractol *fractal)
 {
 	if (key == XK_Escape)
-		close_handler(fractal);
+		close_handler(4, fractal);
 	else if (key == XK_Left)
 		fractal->shift_x += (1 * fractal->zoom);
 	else if (key == XK_Right)

@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:44:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/02 23:36:56 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:51:07 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_complex	square_complex(t_complex z);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 int			key_handler(int keySym, t_fractol *fractal);
 int			mouse_handler(int but, int x, int y, t_fractol *fractal);
-int			close_handler(t_fractol *fractal);
-double		normalize(double value, double old_min, double old_max);
+int			close_handler(int n, t_fractol *fractal);
+double		norm(double value, double old_min, double old_max);
 
 #endif

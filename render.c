@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:18:51 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/02 23:37:52 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:30:38 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixels + offset) = color;
 }
 
-static void	mandel_vs_julia(t_complex *z, t_complex *c, t_fractol *fractal)
-{
-	if (!ft_strncmp(fractal->name, "julia", 5))
-	{
-		c->x = fractal->julia_x;
-		c->y = fractal->julia_y;
-	}
-	else
-	{
-		c->x = z->x;
-		c->y = z->y;
-	}
-}
-
 static void	handle_pixel(int x, int y, t_fractol *fractal)
 {
 	t_complex	z;
@@ -42,23 +28,23 @@ static void	handle_pixel(int x, int y, t_fractol *fractal)
 	int			color;
 
 	i = 0;
-	color = 0;
-	z.x = (map(normalize(x, 0, WIDTH), -2, 2) * fractal->zoom)
-		+ fractal->shift_x;
-	z.y = (map(normalize(y, 0, HEIGHT), 2, -2) * fractal->zoom)
-		+ fractal->shift_y;
-	mandel_vs_julia(&z, &c, fractal);
-	while (i < fractal->iterations)
+	z.x = (map(norm(x, 0, WIDTH), -2, 2) * fractal->zoom) + fractal->shift_x;
+	z.y = (map(norm(y, 0, HEIGHT), 2, -2) * fractal->zoom) + fractal->shift_y;
+	if (!ft_strcmp(fractal->name, "julia"))
+	{
+		c.x = fractal->julia_x;
+		c.y = fractal->julia_y;
+	}
+	else
+		c = z;
+	while (i++ < fractal->iterations)
 	{
 		z = sum_complex(square_complex(z), c);
-		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
+		if (sqrt(pow(z.x, 2) + pow(z.y, 2)) > fractal->escape_value)
 		{
-			color = map(normalize(i, 0, fractal->iterations), WHITE,
-					ULTRA_VIOLET);
-			my_pixel_put(x, y, &fractal->img, color);
-			return ;
+			return (color = map(norm(i, 0, fractal->iterations), WHITE,
+					ULTRA_VIOLET), my_pixel_put(x, y, &fractal->img, color));
 		}
-		++i;
 	}
 	my_pixel_put(x, y, &fractal->img, BURNING_GOLD);
 }
