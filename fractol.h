@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:44:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/04 18:22:22 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:42:31 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <string.h>
 # include <unistd.h>
 
-# define WIDTH 200
-# define HEIGHT 200
+# define W 200
+# define H 200
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF

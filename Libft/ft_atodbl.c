@@ -6,39 +6,39 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:42:32 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/04 18:50:40 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:13:28 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atoi_integer_part(char *s)
+long	ft_atoi_integer_part(char **s)
 {
 	long	integer_part;
 
 	integer_part = 0;
-	while (*s != '.' && *s)
+	while (**s >= '0' && **s <= '9')
 	{
-		integer_part = (integer_part * 10) + (*s - '0');
-		s++;
+		integer_part = (integer_part * 10) + (**s - '0');
+		(*s)++;
 	}
 	return (integer_part);
 }
 
-double	ft_atoi_fractional_part(char *s)
+double	ft_atoi_fractional_part(char **s)
 {
 	double	fractional_part;
-	double	pow;
+	double	divisor;
 
 	fractional_part = 0.0;
-	pow = 1.0;
-	if (*s == '.')
-		s++;
-	while (*s)
+	divisor = 1.0;
+	if (**s == '.')
+		(*s)++;
+	while (**s >= '0' && **s <= '9')
 	{
-		pow /= 10;
-		fractional_part = fractional_part + (*s - '0') * pow;
-		s++;
+		divisor *= 10;
+		fractional_part += (**s - '0') / divisor;
+		(*s)++;
 	}
 	return (fractional_part);
 }
@@ -56,13 +56,15 @@ double	ft_atodbl(char *s)
 		s++;
 	if (*s == '.')
 		return (0);
-	while (*s == '+' || *s == '-')
+	if (*s == '-' || *s == '+')
 	{
 		if (*s == '-')
-			sign = -sign;
+			sign = -1;
 		s++;
 	}
-	integer_part = ft_atoi_integer_part(s);
-	fractional_part = ft_atoi_fractional_part(s);
-	return ((integer_part + fractional_part) * sign);
+	if (*s == '.' || (*s >= '0' && *s <= '9'))
+		integer_part = ft_atoi_integer_part(&s);
+	if (*s == '.')
+		fractional_part = ft_atoi_fractional_part(&s);
+	return (sign * (integer_part + fractional_part));
 }

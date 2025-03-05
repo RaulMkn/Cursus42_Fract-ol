@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:51:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/04 18:32:23 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:41:52 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	fractal_init(t_fractol *fractal)
 	fractal->mlx_connection = mlx_init();
 	if ((fractal->mlx_connection == NULL))
 		close_handler(0, fractal);
-	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, WIDTH, HEIGHT,
+	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, W, H,
 			fractal->name);
 	if (fractal->mlx_window == NULL)
 		close_handler(2, fractal);
-	fractal->img.img = mlx_new_image(fractal->mlx_connection, WIDTH, HEIGHT);
+	fractal->img.img = mlx_new_image(fractal->mlx_connection, W, H);
 	if (fractal->img.img == NULL)
 		close_handler(3, fractal);
 	fractal->img.pixels = mlx_get_data_addr(fractal->img.img,

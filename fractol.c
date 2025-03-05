@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 22:08:40 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/04 18:10:45 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:14:39 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	handle_julia_args(t_fractol *fractal, char *argv[])
 {
 	fractal->julia_x = ft_atodbl(argv[2]);
 	fractal->julia_y = ft_atodbl(argv[3]);
-	if (fractal->julia_x == 0 || fractal->julia_y == 0)
+	if ((fractal->julia_x == 0 || fractal->julia_y == 0) && (argv[2][0] != '0'
+		|| argv[3][0] != '0'))
 	{
 		ft_putstr_fd("Error: Missing argument.\n", 2);
 		exit(1);

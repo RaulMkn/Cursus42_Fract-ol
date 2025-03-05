@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:18:51 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/04 18:52:29 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:43:12 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void	handle_pixel(int x, int y, t_fractol *fractal)
 	int			color;
 
 	i = -1;
-	z.x = (map(norm(x, 0, WIDTH), -2, 2) * fractal->zoom) + fractal->shift_x;
-	z.y = (map(norm(y, 0, HEIGHT), 2, -2) * fractal->zoom) + fractal->shift_y;
+	z.x = ((x - (W / 2.0)) / (W / 4.0)) * fractal->zoom + fractal->shift_x;
+	z.y = ((y - (H / 2.0)) / (H / 4.0)) * fractal->zoom + fractal->shift_y;
 	if (!ft_strcmp(fractal->name, "julia"))
 	{
 		c.x = fractal->julia_x;
@@ -55,10 +55,10 @@ void	fractal_render(t_fractol *fractal)
 	int	y;
 
 	y = 0;
-	while (y++ < HEIGHT)
+	while (y++ < H)
 	{
 		x = 0;
-		while (x++ < WIDTH)
+		while (x++ < W)
 			handle_pixel(x, y, fractal);
 	}
 	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
