@@ -6,12 +6,12 @@
 #    By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 21:07:40 by rmakende          #+#    #+#              #
-#    Updated: 2025/03/02 19:24:28 by rmakende         ###   ########.fr        #
+#    Updated: 2025/03/06 17:58:35 by rmakende         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
 
 MINILIBX_DIR = ./minilibx-linux
