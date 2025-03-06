@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 22:08:40 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/05 17:14:39 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/06 18:38:27 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,24 @@ static void	handle_args(char *argv)
 	}
 }
 
+static int	is_valid_zero(const char *arg)
+{
+	if (!arg)
+		return (0);
+	if (arg[0] == '0' && (arg[1] == '\0' || (arg[1] == '.' && arg[2] == '0'
+				&& arg[3] == '\0')))
+		return (1);
+	return (0);
+}
+
 static void	handle_julia_args(t_fractol *fractal, char *argv[])
 {
 	fractal->julia_x = ft_atodbl(argv[2]);
 	fractal->julia_y = ft_atodbl(argv[3]);
-	if ((fractal->julia_x == 0 || fractal->julia_y == 0) && (argv[2][0] != '0'
-		|| argv[3][0] != '0'))
+	if ((fractal->julia_x == 0 && !is_valid_zero(argv[2]))
+		|| (fractal->julia_y == 0 && !is_valid_zero(argv[3])))
 	{
-		ft_putstr_fd("Error: Missing argument.\n", 2);
+		ft_putstr_fd("Error: Invalid argument.\n", 2);
 		exit(1);
 	}
 	handle_args(argv[2]);

@@ -6,7 +6,7 @@
 /*   By: rmakende <rmakende@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 22:51:03 by rmakende          #+#    #+#             */
-/*   Updated: 2025/03/05 13:41:52 by rmakende         ###   ########.fr       */
+/*   Updated: 2025/03/06 18:08:51 by rmakende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	close_window(void *param)
 static void	data_init(t_fractol *fractal)
 {
 	fractal->escape_value = 4;
-	fractal->iterations = 420;
+	fractal->iterations = 42;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
@@ -48,7 +48,7 @@ static void	events_init(t_fractol *fractal)
 void	fractal_init(t_fractol *fractal)
 {
 	fractal->mlx_connection = mlx_init();
-	if ((fractal->mlx_connection == NULL))
+	if (fractal->mlx_connection == NULL)
 		close_handler(0, fractal);
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, W, H,
 			fractal->name);
